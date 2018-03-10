@@ -1,12 +1,15 @@
 <template>
-  <div class="hello">
-    <div class="container-fluid">
-      <h1>Last Five Games</h1>
-      <game-log :game-log="gameLog" v-if="player"></game-log>
+  <div style="background: #eaeaea">
+    <div>
+      <div class="player-stats-block">
+        <h5 class="text-center">Game Log</h5>
+        <game-log :game-log="gameLog" v-if="player" />
+      </div>
 
-
-      <h1>Career Stats</h1>
-      <career-stats :seasons="seasons" :career="career" v-if="player"></career-stats>
+      <div class="player-stats-block">
+        <h5 class="text-center">Career Stats</h5>
+        <career-stats :seasons="seasons" :career="career" :playoffs="playoffs" v-if="player" />
+      </div>
     </div>
   </div>
 </template>
@@ -26,7 +29,7 @@ export default {
   mounted() {
     let params = {
       expand: 'person.stats,stats.team',
-      stats: 'yearByYear,careerRegularSeason,gameLog'
+      stats: 'yearByYear,careerRegularSeason,gameLog,yearByYearPlayoffs'
     }
 
     this.$http.get('https://statsapi.web.nhl.com/api/v1/people/' + window.webConnector.load(), {
@@ -65,6 +68,23 @@ export default {
       }
 
       return seasons
+    },
+
+    playoffs() {
+      let playoffs = []
+      if (this.player) {
+        for (let stat of this.player.stats) {
+          if (stat.type.displayName === 'yearByYearPlayoffs') {
+            for (let split of stat.splits) {
+              if (split.league.id === 133) {
+                playoffs.push(split)
+              }
+            }
+          }
+        }
+      }
+
+      return playoffs
     },
 
     career() {

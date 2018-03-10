@@ -4,6 +4,10 @@ import router from './router'
 import './assets/sass/main.sass'
 import axios from 'axios'
 
+require('typeface-roboto')
+require('typeface-roboto-mono')
+require('typeface-merriweather')
+
 Vue.prototype.$http = axios
 
 Vue.config.productionTip = false
@@ -12,12 +16,13 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
-  components: { App },
+  components: {
+    App
+  },
   template: '<App/>'
 })
 
 axios.get('https://www-league.nhlstatic.com/images/logos/team-sprites/20172018.svg').then((response) => {
-  console.log(response)
   let node = document.createElement('div')
   node.style.display = 'none'
   node.innerHTML = response.data

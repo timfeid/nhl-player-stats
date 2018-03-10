@@ -20,6 +20,7 @@
 
 .table
   font-size: 90%
+  font-family: "Roboto Mono", monospace
 
   td
     white-space: nowrap
@@ -29,13 +30,19 @@
 
   thead
     th
+      white-space: nowrap
+      font-family: "Roboto"
       font-weight: 400
       text-transform: uppercase
       border-color: #4c4c4c
       background: black
       color: white
+      .stats--icon
+        display: none
       &.stats--highlight
         background: theme-color("primary")
+        .stats--icon
+          display: inline
   &-container
     &--scrollable
       max-width: 100%
