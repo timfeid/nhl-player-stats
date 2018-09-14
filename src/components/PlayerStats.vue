@@ -1,6 +1,6 @@
 <template>
   <div style="background: #eaeaea">
-    <div>
+    <div class="pt-2">
       <div class="player-stats-block">
         <h5 class="text-center">Game Log</h5>
         <game-log :game-log="gameLog" v-if="player" />

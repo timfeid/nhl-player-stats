@@ -9,10 +9,12 @@
     "start": "npm run dev",
     "lint": "eslint --ext .js,.vue src",
     "build": "node build/build.js",
-    "windows-build": "node build/build.js &&  cp -r dist/* \"/c/Users/Tim Feid/AndroidStudioProjects/devils/app/src/main/assets/\" && sed -i -e 's/=\\/static\\//=static\\//g' \"/c/Users/Tim Feid/AndroidStudioProjects/devils/app/src/main/assets/index.html\""
+    "windows-build": "node build/build.js && rm -rf \"/c/Users/Tim Feid/AndroidStudioProjects/devils/app/src/main/assets/player-stats/*\" && cp -r dist/* \"/c/Users/Tim Feid/AndroidStudioProjects/devils/app/src/main/assets/player-stats/\" && npm run clean-for-android",
+    "clean-for-android": "sed -i 's/=\\/static/=static/g' ~/AndroidStudioProjects/devils/app/src/main/assets/player-stats/*.html"
   },
   "dependencies": {
     "@fortawesome/fontawesome": "^1.1.4",
+    "@fortawesome/fontawesome-free-regular": "^5.0.13",
     "@fortawesome/fontawesome-free-solid": "^5.0.8",
     "@fortawesome/vue-fontawesome": "0.0.22",
     "axios": "^0.18.0",

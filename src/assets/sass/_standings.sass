@@ -1,0 +1,38 @@
+.standings
+  font-size: 1em
+  &__record
+    &--highlight
+      td
+        background: $brand-very-light
+    td
+      text-align: center
+      white-space: nowrap
+      &:first-child
+        text-align: left
+
+    &__team
+      white-space: nowrap
+      font-weight: 300
+      @include media-breakpoint-up(md)
+        width: 245px
+      @include media-breakpoint-down(md)
+        width: 115px
+
+      &__rank
+        width: 20px
+        text-align: right
+        display: inline-block
+
+      &__logo
+        display: inline-block
+        width: 42px
+        height: 28px
+        vertical-align: middle
+
+  &--wildcard
+    tr:nth-child(3)
+      td
+        border-top: 10px solid #999
+        &.col1
+          margin-top: -5px
+          height: 50px

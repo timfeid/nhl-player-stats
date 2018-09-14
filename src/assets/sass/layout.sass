@@ -1,10 +1,35 @@
 body
   font-weight: 300
+  text-rendering: optimizeLegibility
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
 
 .player-stats-block
   background: white
-  margin-bottom: 1rem
-  padding: 1rem 0
+  margin-bottom: .5rem
+  padding: .5rem
 
 h1,h2,h3,h4,h5
   font-family: Merriweather
+
+.video-preview__image-link
+	position: relative
+
+.video-preview__gradient
+	color: white
+	position: absolute
+	bottom: 0
+	background: linear-gradient(to top, rgba(0, 0, 0, .8), rgba(0, 0, 0, 0))
+	display: flex
+	padding-top: 50px !important
+	width: 100%
+
+.video-preview__blurb
+	color: white
+	font-size: 1.2rem
+	margin: 0
+	align-self: flex-end
+
+.video-preview__time
+	white-space: nowrap
+	align-self: flex-end
